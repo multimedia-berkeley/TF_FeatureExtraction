@@ -19,7 +19,6 @@ from __future__ import print_function
 import os
 import h5py
 import numpy as np
-import matplotlib.pyplot as plt
 from datasets import imagenet
 
 # ImageNet mapping class_index => class_name
