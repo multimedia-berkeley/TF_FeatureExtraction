@@ -26,7 +26,7 @@ import feature_extractor.utils as utils
 
 
 def feature_extraction_queue(feature_extractor, image_path, layer_names,
-                             batch_size, num_classes, num_images=100000):
+                             batch_size, num_classes, num_images=300000):
     '''
     Given a directory containing images, this function extracts features
     for all images. The layers to extract features from are specified
@@ -44,7 +44,7 @@ def feature_extraction_queue(feature_extractor, image_path, layer_names,
     '''
 
     # Add a list of images to process, note that the list is ordered.
-    image_files = utils.find_files(image_path, ("jpg", "png"))
+    image_files = utils.find_files_recursive(image_path, "jpg")
     num_images = min(len(image_files), num_images)
     image_files = image_files[0:num_images]
 

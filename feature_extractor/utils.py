@@ -44,6 +44,21 @@ def find_files(paths, extensions, sort=True):
         files.sort()
     return files
 
+
+def find_files_recursive(paths, extension, sort=True):
+    if type(paths) is str:
+        paths = [paths]
+    collected_files = []
+    for path in paths:
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                if file[-len(extension):] == extension:
+                    collected_files.append(os.path.join(root, file))
+    if sort:
+        collected_files.sort()
+    return collected_files
+
+
 def fill_last_batch(image_list, batch_size):
     '''
     Fill up the last batch with the last example for the list.
